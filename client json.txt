@@ -1,0 +1,44 @@
+{
+"clients":{
+"client":[
+{
+"clientID":"123",
+"clientName":{
+	"clientFirstName":"Satish",
+	"clientLastName":"Bote"
+},
+"clientPhoneNumber":[
+{
+	"phoneType":{
+		"value":"Business Fax"
+	},
+	"phoneNumber":{
+		"countryCode":"091",
+		"areacode":"985",
+		"number":"0373844"
+		}
+},
+{
+	"phoneType":{
+		"value":"Business Fax"
+	},
+	"phoneNumber":{
+		"countryCode":"091",
+		"areacode":"985",
+		"number":"0373844"
+		}
+},
+{
+	"phoneType":{
+		"value":"Business Fax"
+	},
+	"phoneNumber":{
+		"countryCode":"091",
+		"areacode":"985",
+		"number":"0373844"
+		}
+}],
+"type":"owner"
+}
+]}}
+	

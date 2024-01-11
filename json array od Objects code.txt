@@ -1,0 +1,35 @@
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JsonParsingExample {
+    public static void main(String[] args) {
+        String jsonData = "{\"clients\":{\"client\":[{\"clientID\":\"123\",\"clientName\":{\"clientFirstName\":\"Satish\",\"clientLastName\":\"Bote\"},\"clientPhoneNumber\":[{\"phoneType\":{\"value\":\"Business Fax\"},\"phoneNumber\":{\"countryCode\":\"091\",\"areacode\":\"985\",\"number\":\"0373844\"}},{\"phoneType\":{\"value\":\"Business Fax\"},\"phoneNumber\":{\"countryCode\":\"091\",\"areacode\":\"985\",\"number\":\"0373844\"}},{\"phoneType\":{\"value\":\"Business Fax\"},\"phoneNumber\":{\"countryCode\":\"091\",\"areacode\":\"985\",\"number\":\"0373844\"}}],\"type\":\"owner\"}]}}";
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            // Parse JSON data
+            JsonNode rootNode = objectMapper.readTree(jsonData);
+
+            // Iterate over clientPhoneNumber objects
+            JsonNode clients = rootNode.path("clients").path("client");
+            for (JsonNode client : clients) {
+                JsonNode phoneNumbers = client.path("clientPhoneNumber");
+                for (JsonNode phoneNumber : phoneNumbers) {
+                    String phoneType = phoneNumber.path("phoneType").path("value").asText();
+                    String countryCode = phoneNumber.path("phoneNumber").path("countryCode").asText();
+                    String areaCode = phoneNumber.path("phoneNumber").path("areacode").asText();
+                    String number = phoneNumber.path("phoneNumber").path("number").asText();
+
+                    System.out.println("Phone Type: " + phoneType);
+                    System.out.println("Country Code: " + countryCode);
+                    System.out.println("Area Code: " + areaCode);
+                    System.out.println("Number: " + number);
+                    System.out.println();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
